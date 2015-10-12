@@ -117,7 +117,9 @@ public final class FlowDelegate {
       flow = new Flow(selectHistory(intent, savedHistory, defaultHistory, parceler));
     }
     flow.setDispatcher(dispatcher);
-    return new FlowDelegate(flow, dispatcher, parceler);
+    FlowDelegate fd = new FlowDelegate(flow, dispatcher, parceler);
+    fd.dispatcherSet = true;
+    return fd;
   }
 
   public void onNewIntent(Intent intent) {
